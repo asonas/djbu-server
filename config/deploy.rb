@@ -36,7 +36,7 @@ set :deploy_to, '/var/www/djbu.ason.as'
 
 set :rbenv_type, :user # or :system, depends on your rbenv setup
 set :rbenv_ruby, '2.1.0'
-set :linked_dirs, %w{tmp/pids vendor/bundle}
+set :linked_dirs, %w{tmp/pids vendor/bundle log}
 
 namespace :deploy do
 
