@@ -19,6 +19,7 @@ GEM
     i18n (0.6.9)
     idobata (0.0.7)
       faraday (~> 0.8.8)
+    kgio (2.9.2)
     multi_json (1.9.2)
     multipart-post (1.2.0)
     net-scp (1.1.2)
@@ -29,6 +30,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    raindrops (0.13.0)
     rake (10.2.2)
     redis (3.0.7)
     sinatra (1.4.4)
@@ -50,6 +52,10 @@ GEM
       tins (~> 1.0)
     tilt (1.4.1)
     tins (1.1.0)
+    unicorn (4.8.2)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
 
 PLATFORMS
   ruby
@@ -63,3 +69,4 @@ DEPENDENCIES
   redis
   sinatra
   sinatra-contrib
+  unicorn

@@ -4,6 +4,7 @@ gem "sinatra"
 gem "sinatra-contrib"
 gem "redis"
 gem "idobata"
+gem "unicorn"
 
 group :development do
   gem "capistrano"
