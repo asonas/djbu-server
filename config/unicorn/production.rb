@@ -1,5 +1,5 @@
 # config/unicorn.rb
-application = 'asonas.jp'
+application = 'djbu.ason.as'
 deploy_to = "/var/www/#{application}"
 
 listen "/tmp/unicorn_#{application}.sock"
