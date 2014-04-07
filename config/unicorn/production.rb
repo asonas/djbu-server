@@ -1,11 +1,11 @@
 # config/unicorn.rb
-application = 'djbu.ason.as'
+application = 'asonas.jp'
 deploy_to = "/var/www/#{application}"
 
 listen "/tmp/unicorn_#{application}.sock"
 pid "tmp/pids/unicorn.pid"
 
-worker_processes 2
+worker_processes 6
 preload_app true
 
 # capistrano 用に RAILS_ROOT を指定
@@ -13,13 +13,9 @@ working_directory "#{deploy_to}/current"
 
 if ENV['RAILS_ENV'] == 'production'
   shared_path = "#{deploy_to}/shared"
-  stderr_path = "#{shared_path}/log/unicorn.stderr.log"
-  stdout_path = "#{shared_path}/log/unicorn.stdout.log"
+  stderr_path "#{shared_path}/log/unicorn.stderr.log"
+  stdout_path "#{shared_path}/log/unicorn.stdout.log"
 end
-
-# ログ
-stderr_path File.expand_path('log/unicorn.log', ENV['RAILS_ROOT'])
-stdout_path File.expand_path('log/unicorn.log', ENV['RAILS_ROOT'])
 
 preload_app true
 
@@ -43,3 +39,5 @@ end
 after_fork do |server, worker|
   defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
 end
+
+
