@@ -44,6 +44,8 @@ namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
     on roles(:app), in: :sequence, wait: 5 do
+      with rails_env: fetch(:rails_env) do
+      end
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
     end
@@ -54,14 +56,20 @@ namespace :deploy do
   desc 'Start application'
   task :start do
     invoke "unicorn:start"
+    with rails_env: fetch(:rails_env) do
+    end
   end
 
   task :reload do
     invoke "unicorn:reload"
+    with rails_env: fetch(:rails_env) do
+    end
   end
 
   task :stop do
-    invoke "unicorn:stop"
+   invoke "unicorn:stop"
+   with rails_env: fetch(:rails_env) do
+   end
   end
 
 end

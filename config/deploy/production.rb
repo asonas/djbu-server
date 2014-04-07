@@ -1,4 +1,3 @@
-set :stage, :production
 # Simple Role Syntax
 # ==================
 # Supports bulk-adding hosts to roles, the primary
@@ -8,6 +7,8 @@ set :stage, :production
 role :app, %w{153.121.46.66}
 role :web, %w{153.121.46.66}
 role :db,  %w{153.121.46.66}
+
+set :rails_env, "production"
 
 # Extended Server Syntax
 # ======================
