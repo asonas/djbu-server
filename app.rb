@@ -12,6 +12,7 @@ post '/music' do
   return 404 unless accessible?(url)
 
   redis.lpush :musics, url
+  json({ message: "success", url: url })
 end
 
 get '/music' do
