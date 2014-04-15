@@ -5,6 +5,7 @@ gem "sinatra-contrib"
 gem "redis"
 gem "idobata"
 gem "unicorn"
+gem "mechanize"
 
 group :development do
   gem "capistrano"
