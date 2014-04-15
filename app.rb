@@ -6,17 +6,17 @@ require 'uri'
 
 redis = Redis.new host:"127.0.0.1", port:"6379"
 
-post '/music' do
+post '/:key' do
   url = params[:url]
   return 400 unless valid_http_uri?(url)
   return 404 unless accessible?(url)
 
-  redis.lpush :musics, url
+  redis.lpush params[:key], url
   json({ message: "success", url: url })
 end
 
-get '/music' do
-  url = redis.lpop :musics
+get '/:key' do
+  url = redis.lpop params[:key]
   json({ url: url })
 end
 
