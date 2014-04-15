@@ -3,11 +3,11 @@ require "sinatra/json"
 require "sinatra/reloader" if development?
 require 'redis'
 require 'uri'
-require 'mechanize'
 
 redis = Redis.new host:"127.0.0.1", port:"6379"
 
 post "/image" do
+  require 'mechanize'
   agent = Mechanize.new
   page = agent.get("http://www.ascii2d.net/imagesearch")
   form = page.forms[1]
@@ -16,7 +16,7 @@ post "/image" do
   links = result.search("div.box div.detail a").map{ |a| a[:href] }
   urls = links.map do |link|
     link if link.include?("illust_id")
-  end.take(3)
+  end.compact.take(3)
 
   json({ message: :success, urls: urls })
 end
