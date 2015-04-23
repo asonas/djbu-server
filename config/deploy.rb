@@ -9,6 +9,7 @@ set :repo_url, 'git@github.com:asonas/djbu-server.git'
 
 # Default deploy_to directory is /var/www/my_app
 set :deploy_to, '/var/www/djbu.ason.as'
+set :bundle_jobs, 4
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -35,7 +36,7 @@ set :deploy_to, '/var/www/djbu.ason.as'
 # set :keep_releases, 5
 
 set :rbenv_type, :user # or :system, depends on your rbenv setup
-set :rbenv_ruby, '2.1.0'
+set :rbenv_ruby, '2.2.0'
 set :linked_dirs, %w{tmp/pids vendor/bundle log}
 
 namespace :deploy do
